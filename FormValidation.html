@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+
+    <style>
+        body {
+            background-color: #ddd;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        .row {
+            padding: 5px; 
+
+        }
+
+        .formContainer {
+            width: 400px;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 5px seagreen;
+            padding: 10px;
+            border-radius: 1em;
+            background-color: white;
+            align-self: center;
+                    }
+
+        .heading {
+            font-size: 25pt;
+            margin: auto;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="formContainer">
+        <div class="heading">Student Form</div>
+
+
+        <div class="row">
+            <label for="sName">Name</label>
+            <input type="text" id="sName">
+        </div>
+
+        <div class="row">
+            <label for="sPhone">Phone</label>
+            <input type="text" id="sPhone">
+        </div>
+        <div class="row">
+            <label for="course">Course</label>
+            <select id="sCourse">
+                <option value="">Select Course</option>
+                <option value="jee">J2EE</option>
+                <option value="c#">C#</option>
+                <option value="gave">GAVE</option>
+            </select>
+        </div>
+
+
+        <div class="row">
+            <label for="sPhone">Gender</label>
+            <input type="radio" name="gen" id="male">Male
+            <input type="radio" name="gen" id="female">Female
+        </div>
+
+        <div class="r" id="result"></div>
+
+        <div class="row">
+            <input type="button" value="Submit" onclick="submitValue(sName,sPhone,sCourse,male,female,result)">
+        </div>
+
+
+
+    </div>
+
+
+  
+
+
+    <script>
+
+      
+        function submitValue(sName, sPhone, sCourse, male, female, result) {
+            result.innerHTML = "";
+            if (sName.value == "") {
+                result.innerHTML += "Name Cannot Be Empty!";
+            }
+            if (sPhone.value == "") {
+                result.innerHTML += "<br/>Phone Cannot Be Empty!";
+            }
+            if (sCourse.value == "") {
+                result.innerHTML += "<br/>Select Course!";
+            }
+            if (!male.checked && !female.checked) {
+                result.innerHTML += "<br/>Select Gender!";
+            }
+
+            if ((sName.value != "") && (sPhone.value != "") && (sCourse.value != "") && (male.checked || female.checked)) {
+                result.innerHTML = "Form Submitted!";
+
+       var htmlr = `
+       <table style="width: 300px; margin: auto; margin-top: 20px;" border="1" cellspacing=0>
+       <caption style="font-size: 15pt;font-weight: bolder;">Submitted data</caption>
+        <tr>
+            <td>Name</td>
+            <td>${sName.value}</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>${sPhone.value}</td>
+        </tr>
+        <tr>
+            <td>Course</td>
+            <td>${sCourse.value}</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td> ${male.checked?'male':"female"}</td>
+        </tr>
+		</table>
+ `
+
+                var mw = open("");
+                mw.document.write(htmlr);
+
+            }
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

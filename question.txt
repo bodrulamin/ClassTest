@@ -1,0 +1,10 @@
+Form Validation
+name - 6 atleast
+phone - not empty
+course - not empty
+gender - not empty
+
+
+
+2 email Validation
+3 prime number

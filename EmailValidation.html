@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailValidation</title>
+
+<style>
+    body{
+        width: 300px;
+        margin: auto;
+        margin-top: 20px;
+        border-radius: 1em;
+        padding: 30px;
+        box-shadow: 0 0 5px rebeccapurple;
+        
+    }
+</style>
+</head>
+
+<body>
+    <label for="email"> Email</label>
+
+    <input type="email" name="email" id="uEmail" ">
+    <input type="button" value="Check" name="email" id="uEmail" onclick="validate(uEmail.value,result)">
+    <div id="result"></div>
+
+    <script>
+        function validate(email,result) {
+            var regex = /^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,8}$/
+
+
+            if (regex.test(email, result)) {
+                result.innerHTML = "Email is Valid";
+            } else {
+                result.innerHTML = "Email is not Valid";
+            }
+        }
+    </script>
+</body>
+
+</html>
